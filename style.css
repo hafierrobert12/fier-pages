@@ -1,0 +1,29 @@
+body {
+  font-family: Georgia, serif;
+  background: #f4f1ec;
+  color: #3a3a3a;
+  text-align: center;
+  padding: 80px;
+}
+
+h1 {
+  color: #4f6f64;
+  font-size: 2.5rem;
+}
+
+p {
+  max-width: 600px;
+  margin: 20px auto;
+  line-height: 1.7;
+}
+
+a {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #7d9d8c, #b6c9b2);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+}
