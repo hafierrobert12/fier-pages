@@ -1,8 +1,8 @@
 :root {
-    --bg: #f7f2eb;          /* creamy beige */
-    --primary: #5a3e2b;    /* cocoa brown */
-    --secondary: #8b6f5a;  /* warm brown */
-    --accent: #c1a58a;     /* caramel */
+    --bg: #f7f2eb;
+    --primary: #5a3e2b;
+    --secondary: #8b6f5a;
+    --accent: #c1a58a;
     --text: #3e2a1f;
 }
 
@@ -37,7 +37,7 @@ header p {
     font-weight: 300;
 }
 
-/* NAV */
+/* NAVIGATION */
 nav {
     display: flex;
     justify-content: center;
@@ -54,13 +54,14 @@ nav a {
     font-weight: 500;
 }
 
-/* CONTENT */
+/* CONTAINER */
 .container {
     width: 85%;
     max-width: 1050px;
     margin: auto;
 }
 
+/* DESCRIPTION */
 .description {
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem;
