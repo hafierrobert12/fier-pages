@@ -2,347 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happilib Site</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f5efe6;
-            color: #3b2f2f;
-        }
-
-        header {
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 3px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            padding: 15px;
-            background-color: #e8ddcf;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #3b2f2f;
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 40px 20px;
-        }
-
-        .description {
-            text-align: center;
-            margin-bottom: 50px;
-            line-height: 1.8;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .info-card {
-            background: #fffaf3;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #7b5e42;
-            color: white;
-            border-radius: 20px;
-            text-decoration: none;
-        }
-
-        .btn:hover {
-            background-color: #5f4632;
-        }
-
-        .videos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 200px;
-            border-radius: 12px;
-        }
-
-        /* FOOTER */
-        footer {
-            background-color: #e8ddcf;
-            padding: 40px 20px;
-            margin-top: 60px;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .footer-content h3 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 10px;
-        }
-
-        .footer-content p {
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-
-        .feedback textarea {
-            width: 100%;
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            resize: none;
-            margin-bottom: 10px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .feedback button {
-            padding: 10px 25px;
-            background-color: #7b5e42;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-        .feedback button:hover {
-            background-color: #5f4632;
-        }
-
-        .copyright {
-            margin-top: 25px;
-            font-size: 13px;
-        }
-
-        /* AUTH MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-        }
-
-        .modal-content {
-            background: #f5efe6;
-            padding: 30px;
-            width: 320px;
-            border-radius: 14px;
-        }
-
-        .auth-form h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .auth-form input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 12px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-
-        .auth-form button {
-            width: 100%;
-            padding: 10px;
-            background: #7b5e42;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .auth-form button:hover {
-            background: #5f4632;
-        }
-
-        .switch {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 14px;
-        }
-
-        .switch span {
-            color: #7b5e42;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
 
-<header>
-    <h1>HAPPILIB</h1>
-    <p>Welcome To Happilib! Where Happiness Finds Its Shelf.</p>
-</header>
+<h1>HAPPILIB</h1>
+<p>Welcome To Happilib! Where Happiness Finds Its Shelf.</p>
+
+<hr>
 
 <nav>
-    <a href="#">Home</a>
-    <a href="#">Library</a>
-    <a href="#">About</a>
+    <a href="#">Home</a> |
+    <a href="#">Library</a> |
+    <a href="#">About</a> |
     <a href="#" id="loginBtn">Login</a>
 </nav>
 
-<main class="container">
+<hr>
 
-    <section class="description">
-        <p>
-            Happilib is a quiet corner where warmth, words, and curiosity live side by side.
-            Born from happiness and library, this space is designed to feel soft, grounding,
-            and human—like sunlight resting on wooden shelves. Inspired by earthy brown tones
-            and the gentle atmosphere of Eternal Sunshine, Happilib invites you to slow down
-            and breathe between pages. Where happiness finds its shelf.
-        </p>
-    </section>
+<h2>Description</h2>
+<p>
+    Happilib is a quiet corner where warmth, words, and curiosity live side by side.
+    Born from happiness and library, this space is designed to feel soft, grounding,
+    and human. Inspired by the gentle atmosphere of Eternal Sunshine, Happilib invites
+    you to slow down and breathe between pages.
+</p>
 
-    <section class="info-grid">
-        <div class="info-card">
-            <h2>About the Creator</h2>
-            <p>
-                Learn more about the creator’s background, academic journey, and interests
-                in library and information science.
-            </p>
-            <a class="btn" href="https://drive.google.com/file/d/1MIJDx16kedmmkja18JaSrJ6Y3DdFcspg/view" target="_blank">
-                View CV
-            </a>
-        </div>
+<hr>
 
-        <div class="info-card">
-            <h2>Social</h2>
-            <p>
-                Feel free to connect and reach out through social media for collaboration,
-                discussion, or shared interests.
-            </p>
-            <a class="btn" href="https://www.instagram.com/ha_.ppier" target="_blank">
-                Instagram
-            </a>
-        </div>
-    </section>
+<h2>About the Creator</h2>
+<p>
+    Learn more about the creator’s background, academic journey, and interests
+    in library and information science.
+</p>
+<p>
+    <a href="https://drive.google.com/file/d/1MIJDx16kedmmkja18JaSrJ6Y3DdFcspg/view" target="_blank">
+        View CV
+    </a>
+</p>
 
-    <section class="videos">
-        <iframe src="https://www.youtube.com/embed/p7jATa6Soag" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/yj1Kvhog6PU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/dS_HLHozs1E" allowfullscreen></iframe>
-    </section>
+<hr>
 
-</main>
+<h2>Social</h2>
+<p>
+    Feel free to connect through social media.
+</p>
+<p>
+    <a href="https://www.instagram.com/ha_.ppier" target="_blank">
+        Instagram
+    </a>
+</p>
+
+<hr>
+
+<h2>Videos</h2>
+
+<iframe width="300" height="200" src="https://www.youtube.com/embed/p7jATa6Soag"></iframe>
+<br><br>
+<iframe width="300" height="200" src="https://www.youtube.com/embed/yj1Kvhog6PU"></iframe>
+<br><br>
+<iframe width="300" height="200" src="https://www.youtube.com/embed/dS_HLHozs1E"></iframe>
+
+<hr>
 
 <footer>
-    <div style="
-        background-color:#e8ddcf;
-        padding:40px 20px;
-        text-align:center;
-    ">
-        <h3 style="font-family:'Playfair Display', serif; margin-bottom:10px;">
-            Contact Us
-        </h3>
+    <h3>Contact Us</h3>
+    <p>Email: hafiersihombing05@gmail.com</p>
 
-        <p style="margin-bottom:20px;">
-            📧 hafiersihombing05@gmail.com
-        </p>
+    <p>Share your thoughts:</p>
+    <textarea rows="4" cols="40" placeholder="Write something..."></textarea>
+    <br><br>
+    <button>Send</button>
 
-        <textarea
-            rows="4"
-            placeholder="Share your thoughts..."
-            style="
-                width:80%;
-                max-width:500px;
-                padding:12px;
-                border-radius:10px;
-                border:1px solid #ccc;
-                font-family:'Poppins', sans-serif;
-            ">
-        </textarea>
-
-        <br><br>
-
-        <button style="
-            padding:10px 25px;
-            background-color:#7b5e42;
-            color:white;
-            border:none;
-            border-radius:20px;
-            cursor:pointer;
-        ">
-            Send
-        </button>
-
-        <p style="margin-top:25px; font-size:13px;">
-            © 2026 Happilib — Digital Mini Library
-        </p>
-    </div>
+    <p>© 2026 Happilib — Digital Mini Library</p>
 </footer>
 
-<!-- AUTH MODAL -->
-<div id="authModal" class="modal">
-    <div class="modal-content">
+<!-- LOGIN / SIGN UP (SIMPLE, NO CSS) -->
+<div id="authModal" style="display:none; border:1px solid black; padding:15px; margin-top:20px;">
 
-        <form id="loginForm" class="auth-form">
-            <h2>Login</h2>
-            <input type="text" id="loginName" placeholder="Name" required>
-            <input type="password" id="loginPassword" placeholder="Password" required>
-            <button type="submit">Login</button>
-            <p class="switch">Don’t have an account? <span id="toSignup">Sign up</span></p>
-        </form>
+    <h3>Login</h3>
+    <form id="loginForm">
+        <input type="text" id="loginName" placeholder="Name"><br><br>
+        <input type="password" id="loginPassword" placeholder="Password"><br><br>
+        <button type="submit">Login</button>
+    </form>
 
-        <form id="signupForm" class="auth-form hidden">
-            <h2>Sign Up</h2>
-            <input type="text" id="firstName" placeholder="First Name" required>
-            <input type="text" id="lastName" placeholder="Last Name" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="signupPassword" placeholder="Password" required>
+    <p>
+        Don't have an account?
+        <a href="#" id="toSignup">Sign up</a>
+    </p>
+
+    <div id="signupArea" style="display:none;">
+        <h3>Sign Up</h3>
+        <form id="signupForm">
+            <input type="text" id="firstName" placeholder="First Name"><br><br>
+            <input type="text" id="lastName" placeholder="Last Name"><br><br>
+            <input type="email" id="email" placeholder="Email"><br><br>
+            <input type="password" id="signupPassword" placeholder="Password"><br><br>
             <button type="submit">Create Account</button>
-            <p class="switch">Already have an account? <span id="toLogin">Login</span></p>
         </form>
 
+        <p>
+            Already have an account?
+            <a href="#" id="toLogin">Login</a>
+        </p>
     </div>
+
 </div>
 
 <script>
@@ -350,53 +116,42 @@
     const loginBtn = document.getElementById("loginBtn");
     const loginForm = document.getElementById("loginForm");
     const signupForm = document.getElementById("signupForm");
+    const signupArea = document.getElementById("signupArea");
 
     loginBtn.onclick = () => {
-        modal.style.display = "flex";
-        loginForm.classList.remove("hidden");
-        signupForm.classList.add("hidden");
+        modal.style.display = "block";
+        signupArea.style.display = "none";
     };
 
     document.getElementById("toSignup").onclick = () => {
-        loginForm.classList.add("hidden");
-        signupForm.classList.remove("hidden");
+        signupArea.style.display = "block";
     };
 
     document.getElementById("toLogin").onclick = () => {
-        signupForm.classList.add("hidden");
-        loginForm.classList.remove("hidden");
-    };
-
-    modal.onclick = (e) => {
-        if (e.target === modal) modal.style.display = "none";
+        signupArea.style.display = "none";
     };
 
     signupForm.onsubmit = (e) => {
         e.preventDefault();
         const user = {
             firstName: firstName.value,
-            lastName: lastName.value,
-            email: email.value,
             password: signupPassword.value
         };
         localStorage.setItem("happilibUser", JSON.stringify(user));
-        alert("Account created! Please login 🌿");
-        signupForm.reset();
-        signupForm.classList.add("hidden");
-        loginForm.classList.remove("hidden");
+        alert("Account created!");
+        signupArea.style.display = "none";
     };
 
     loginForm.onsubmit = (e) => {
         e.preventDefault();
         const user = JSON.parse(localStorage.getItem("happilibUser"));
-        if (!user) return alert("No account found. Please sign up first.");
+        if (!user) return alert("No account found.");
 
         if (loginName.value === user.firstName && loginPassword.value === user.password) {
-            alert(`Welcome back, ${user.firstName} ✨`);
+            alert("Login success!");
             modal.style.display = "none";
-            loginForm.reset();
         } else {
-            alert("Incorrect name or password.");
+            alert("Wrong name or password.");
         }
     };
 </script>
