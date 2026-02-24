@@ -1,160 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Happilib Site</title>
+<meta charset="UTF-8">
+<title>LILY — Digital Literature Library</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Georgia", serif;
+    background-color: #f6f2ee;
+    color: #3b3b3b;
+    line-height: 1.7;
+}
+
+header {
+    padding: 40px;
+    text-align: center;
+    background-color: #e7ddd3;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+    letter-spacing: 2px;
+}
+
+header p {
+    font-style: italic;
+    color: #5a514a;
+}
+
+nav {
+    text-align: center;
+    padding: 12px;
+    background-color: #d9cbbf;
+}
+
+nav a {
+    margin: 0 12px;
+    text-decoration: none;
+    color: #3b3b3b;
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.description {
+    font-size: 17px;
+}
+
+.login-box {
+    background-color: #ede5de;
+    padding: 25px;
+    border-radius: 6px;
+    margin-top: 40px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #b8a99c;
+    background-color: #fdfaf7;
+}
+
+.login-box button {
+    background-color: #b07a5a;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    opacity: 0.85;
+}
+
+.note {
+    font-size: 13px;
+    color: #6a625b;
+}
+
+.media iframe {
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+footer {
+    background-color: #e7ddd3;
+    padding: 40px;
+    margin-top: 80px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #fdfaf7;
+    border: 1px solid #b8a99c;
+}
+
+footer button {
+    margin-top: 10px;
+    background-color: #b07a5a;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+</style>
 </head>
 
 <body>
 
-<h1>HAPPILIB</h1>
-<p>Welcome To Happilib! Where Happiness Finds Its Shelf.</p>
-
-<hr>
+<header>
+    <h1>LILY</h1>
+    <p>A digital literature library for slow readers and literary minds</p>
+</header>
 
 <nav>
-    <a href="#">Home</a> |
-    <a href="#">Library</a> |
-    <a href="#">About</a> |
-    <a href="#" id="loginBtn">Login</a>
+    <a href="#">Home</a>
+    <a href="#">Library</a>
+    <a href="#">About</a>
+    <a href="#login">Login</a>
 </nav>
 
-<hr>
+<section>
+    <h2>Description</h2>
+    <p class="description">
+        LILY is a digital literature library for slow readers and literary minds.
+        It curates poetry, prose, and literary texts as spaces of reflection,
+        inviting readers to pause, read quietly, and connect with language beyond
+        speed and noise.
+    </p>
+</section>
 
-<h2>Description</h2>
-<p>
-    Happilib is a quiet corner where warmth, words, and curiosity live side by side.
-    Born from happiness and library, this space is designed to feel soft, grounding,
-    and human. Inspired by the gentle atmosphere of Eternal Sunshine, Happilib invites
-    you to slow down and breathe between pages.
-</p>
+<section class="media">
+    <h2>Quiet Media</h2>
 
-<hr>
+    <iframe width="100%" height="315"
+    src="https://www.youtube.com/embed/BLZKc0AnU7o">
+    </iframe>
 
-<h2>About the Creator</h2>
-<p>
-    Learn more about the creator’s background, academic journey, and interests
-    in library and information science.
-</p>
-<p>
+    <iframe style="border-radius:12px"
+    src="https://open.spotify.com/embed/track/2QZB1C9qniDhS6iqxBG8y6?utm_source=generator"
+    width="100%" height="80" frameBorder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+</section>
+
+<section id="login">
+    <h2>Login</h2>
+    <div class="login-box">
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button>Login</button>
+        <p class="note">*Login feature will be developed in future versions.</p>
+    </div>
+</section>
+
+<section>
+    <h2>About the Creator</h2>
+    <p>
+        Learn more about the creator’s background, academic journey, and interests
+        in library and information science.
+    </p>
     <a href="https://drive.google.com/file/d/1MIJDx16kedmmkja18JaSrJ6Y3DdFcspg/view" target="_blank">
         View CV
     </a>
-</p>
-
-<hr>
-
-<h2>Social</h2>
-<p>
-    Feel free to connect through social media.
-</p>
-<p>
-    <a href="https://www.instagram.com/ha_.ppier" target="_blank">
-        Instagram
-    </a>
-</p>
-
-<hr>
-
-<h2>Videos</h2>
-
-<iframe width="300" height="200" src="https://www.youtube.com/embed/p7jATa6Soag"></iframe>
-<br><br>
-<iframe width="300" height="200" src="https://www.youtube.com/embed/yj1Kvhog6PU"></iframe>
-<br><br>
-<iframe width="300" height="200" src="https://www.youtube.com/embed/dS_HLHozs1E"></iframe>
-
-<hr>
+</section>
 
 <footer>
-    <h3>Contact Us</h3>
+    <h3>Contact</h3>
     <p>Email: hafiersihombing05@gmail.com</p>
 
     <p>Share your thoughts:</p>
-    <textarea rows="4" cols="40" placeholder="Write something..."></textarea>
-    <br><br>
+    <textarea rows="4" placeholder="Write something..."></textarea><br>
     <button>Send</button>
 
-    <p>© 2026 Happilib — Digital Mini Library</p>
+    <p style="margin-top:30px;">© 2026 LILY — Digital Literature Library</p>
 </footer>
 
-<!-- LOGIN / SIGN UP (SIMPLE, NO CSS) -->
-<div id="authModal" style="display:none; border:1px solid black; padding:15px; margin-top:20px;">
-
-    <h3>Login</h3>
-    <form id="loginForm">
-        <input type="text" id="loginName" placeholder="Name"><br><br>
-        <input type="password" id="loginPassword" placeholder="Password"><br><br>
-        <button type="submit">Login</button>
-    </form>
-
-    <p>
-        Don't have an account?
-        <a href="#" id="toSignup">Sign up</a>
-    </p>
-
-    <div id="signupArea" style="display:none;">
-        <h3>Sign Up</h3>
-        <form id="signupForm">
-            <input type="text" id="firstName" placeholder="First Name"><br><br>
-            <input type="text" id="lastName" placeholder="Last Name"><br><br>
-            <input type="email" id="email" placeholder="Email"><br><br>
-            <input type="password" id="signupPassword" placeholder="Password"><br><br>
-            <button type="submit">Create Account</button>
-        </form>
-
-        <p>
-            Already have an account?
-            <a href="#" id="toLogin">Login</a>
-        </p>
-    </div>
-
-</div>
-
-<script>
-    const modal = document.getElementById("authModal");
-    const loginBtn = document.getElementById("loginBtn");
-    const loginForm = document.getElementById("loginForm");
-    const signupForm = document.getElementById("signupForm");
-    const signupArea = document.getElementById("signupArea");
-
-    loginBtn.onclick = () => {
-        modal.style.display = "block";
-        signupArea.style.display = "none";
-    };
-
-    document.getElementById("toSignup").onclick = () => {
-        signupArea.style.display = "block";
-    };
-
-    document.getElementById("toLogin").onclick = () => {
-        signupArea.style.display = "none";
-    };
-
-    signupForm.onsubmit = (e) => {
-        e.preventDefault();
-        const user = {
-            firstName: firstName.value,
-            password: signupPassword.value
-        };
-        localStorage.setItem("happilibUser", JSON.stringify(user));
-        alert("Account created!");
-        signupArea.style.display = "none";
-    };
-
-    loginForm.onsubmit = (e) => {
-        e.preventDefault();
-        const user = JSON.parse(localStorage.getItem("happilibUser"));
-        if (!user) return alert("No account found.");
-
-        if (loginName.value === user.firstName && loginPassword.value === user.password) {
-            alert("Login success!");
-            modal.style.display = "none";
-        } else {
-            alert("Wrong name or password.");
-        }
-    };
-</script>
-
 </body>
-</html>
+</html>          
