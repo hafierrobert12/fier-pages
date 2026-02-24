@@ -7,12 +7,13 @@
 <style>
 body {
     margin: 0;
-    font-family: "Georgia", serif;
+    font-family: Georgia, serif;
     background-color: #f6f2ee;
     color: #3b3b3b;
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
+/* HEADER */
 header {
     padding: 40px;
     text-align: center;
@@ -30,6 +31,7 @@ header p {
     color: #5a514a;
 }
 
+/* NAV */
 nav {
     text-align: center;
     padding: 12px;
@@ -37,7 +39,7 @@ nav {
 }
 
 nav a {
-    margin: 0 12px;
+    margin: 0 14px;
     text-decoration: none;
     color: #3b3b3b;
     font-weight: 500;
@@ -47,10 +49,11 @@ nav a:hover {
     text-decoration: underline;
 }
 
+/* SECTION */
 section {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 0 20px;
+    max-width: 820px;
+    margin: 60px auto;
+    padding: 0 22px;
 }
 
 h2 {
@@ -58,15 +61,31 @@ h2 {
     letter-spacing: 1px;
 }
 
+/* DESCRIPTION */
 .description {
     font-size: 17px;
+    text-align: justify;
+}
+
+/* MEDIA */
+.media iframe {
+    margin: 22px 0;
+    border-radius: 10px;
+}
+
+/* LOGIN (HIDDEN BY DEFAULT) */
+#login {
+    display: none;
+}
+
+#login:target {
+    display: block;
 }
 
 .login-box {
     background-color: #ede5de;
-    padding: 25px;
-    border-radius: 6px;
-    margin-top: 40px;
+    padding: 28px;
+    border-radius: 8px;
 }
 
 .login-box input {
@@ -92,17 +111,14 @@ h2 {
 .note {
     font-size: 13px;
     color: #6a625b;
+    margin-top: 6px;
 }
 
-.media iframe {
-    margin: 20px 0;
-    border-radius: 8px;
-}
-
+/* FOOTER */
 footer {
     background-color: #e7ddd3;
     padding: 40px;
-    margin-top: 80px;
+    margin-top: 90px;
 }
 
 textarea {
@@ -127,7 +143,7 @@ footer button {
 
 <header>
     <h1>LILY</h1>
-    <p>A digital literature library for slow readers and literary minds</p>
+    <p>A digital library dedicated to literature, poetry, and thoughtful reading.</p>
 </header>
 
 <nav>
@@ -142,8 +158,11 @@ footer button {
     <p class="description">
         LILY is a digital literature library for slow readers and literary minds.
         It curates poetry, prose, and literary texts as spaces of reflection,
-        inviting readers to pause, read quietly, and connect with language beyond
-        speed and noise.
+        where language is not rushed, skimmed, or reduced to utility.
+        This digital space is designed for readers who value stillness,
+        emotional resonance, and the quiet intimacy of words.
+        LILY invites its readers to pause, linger, and reconnect with literature
+        beyond speed, algorithms, and noise.
     </p>
 </section>
 
@@ -154,10 +173,11 @@ footer button {
     src="https://www.youtube.com/embed/BLZKc0AnU7o">
     </iframe>
 
-    <iframe style="border-radius:12px"
-    src="https://open.spotify.com/embed/track/2QZB1C9qniDhS6iqxBG8y6?utm_source=generator"
-    width="100%" height="80" frameBorder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    <iframe allow="autoplay *; encrypted-media *;"
+    frameborder="0" height="90"
+    style="width:100%;max-width:100%;border-radius:10px;"
+    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+    src="https://embed.music.apple.com/us/song/intro-end-of-the-world-extended-instrumental/1806174621">
     </iframe>
 </section>
 
@@ -174,8 +194,8 @@ footer button {
 <section>
     <h2>About the Creator</h2>
     <p>
-        Learn more about the creator’s background, academic journey, and interests
-        in library and information science.
+        Learn more about the creator’s background, academic journey,
+        and interests in library and information science.
     </p>
     <a href="https://drive.google.com/file/d/1MIJDx16kedmmkja18JaSrJ6Y3DdFcspg/view" target="_blank">
         View CV
@@ -194,4 +214,4 @@ footer button {
 </footer>
 
 </body>
-</html>          
+</html>
