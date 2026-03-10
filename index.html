@@ -456,6 +456,284 @@
     </style>
 </head>
 
+<script>
+
+/* =========================
+   USER SESSION
+========================= */
+
+let currentUser = null;
+
+/* =========================
+   ENTER SITE
+========================= */
+
+function enterSite(mode){
+
+const landing = document.getElementById("landing-page");
+const app = document.getElementById("main-app");
+
+landing.classList.add("hidden");
+app.classList.add("visible");
+
+if(mode === "guest"){
+currentUser = "guest";
+return;
+}
+
+if(mode === "login"){
+loginUser();
+}
+
+if(mode === "signup"){
+signupUser();
+}
+
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+function loginUser(){
+
+let username = prompt("Username");
+let password = prompt("Password");
+
+let users = JSON.parse(localStorage.getItem("lily_users") || "{}");
+
+if(users[username] && users[username] === password){
+
+currentUser = username;
+unlockCommunity();
+alert("Welcome back " + username);
+
+}else{
+
+alert("Login failed");
+
+}
+
+}
+
+/* =========================
+   SIGNUP
+========================= */
+
+function signupUser(){
+
+let username = prompt("Create username");
+let password = prompt("Create password");
+
+let users = JSON.parse(localStorage.getItem("lily_users") || "{}");
+
+users[username] = password;
+
+localStorage.setItem("lily_users", JSON.stringify(users));
+
+alert("Account created. Please login.");
+
+}
+
+/* =========================
+   UNLOCK COMMUNITY
+========================= */
+
+function unlockCommunity(){
+
+const link = document.getElementById("community-link");
+
+if(link){
+link.classList.remove("locked");
+}
+
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showSection(sectionId){
+
+const sections = document.querySelectorAll("section");
+
+sections.forEach(section => {
+
+section.classList.remove("active");
+
+});
+
+const target = document.getElementById(sectionId);
+
+if(target){
+
+target.classList.add("active");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+}
+
+/* =========================
+   COMMUNITY ACCESS
+========================= */
+
+function checkAccess(sectionId){
+
+if(!currentUser || currentUser === "guest"){
+
+alert("Community requires login.");
+return;
+
+}
+
+showSection(sectionId);
+
+}
+
+/* =========================
+   HAMBURGER MENU
+========================= */
+
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("nav-menu");
+
+if(hamburger){
+
+hamburger.addEventListener("click", () => {
+
+navMenu.classList.toggle("active");
+
+});
+
+}
+
+/* =========================
+   COMMUNITY POSTS
+========================= */
+
+function createPost(){
+
+if(!currentUser){
+
+alert("Login first");
+return;
+
+}
+
+let text = document.getElementById("postInput").value;
+
+if(!text) return;
+
+let posts = JSON.parse(localStorage.getItem("lily_posts") || "[]");
+
+posts.unshift({
+
+user: currentUser,
+text: text,
+likes: 0,
+comments: []
+
+});
+
+localStorage.setItem("lily_posts", JSON.stringify(posts));
+
+document.getElementById("postInput").value = "";
+
+renderPosts();
+
+}
+
+function likePost(i){
+
+let posts = JSON.parse(localStorage.getItem("lily_posts") || "[]");
+
+posts[i].likes++;
+
+localStorage.setItem("lily_posts", JSON.stringify(posts));
+
+renderPosts();
+
+}
+
+function commentPost(i){
+
+let text = prompt("Write comment");
+
+if(!text) return;
+
+let posts = JSON.parse(localStorage.getItem("lily_posts") || "[]");
+
+posts[i].comments.push({
+
+user: currentUser,
+text: text
+
+});
+
+localStorage.setItem("lily_posts", JSON.stringify(posts));
+
+renderPosts();
+
+}
+
+function renderPosts(){
+
+let posts = JSON.parse(localStorage.getItem("lily_posts") || "[]");
+
+const container = document.getElementById("posts-container");
+
+if(!container) return;
+
+container.innerHTML = "";
+
+posts.forEach((post,i)=>{
+
+let div = document.createElement("div");
+
+div.className = "post";
+
+div.innerHTML = `
+<div class="post-header">
+<b>${post.user}</b>
+</div>
+
+<p>${post.text}</p>
+
+<div class="post-actions">
+
+<button class="action-btn" onclick="likePost(${i})">
+❤️ ${post.likes}
+</button>
+
+<button class="action-btn" onclick="commentPost(${i})">
+💬 Comment
+</button>
+
+</div>
+
+${post.comments.map(c=>`
+<div class="comment">
+<b>${c.user}:</b> ${c.text}
+</div>
+`).join("")}
+
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+renderPosts();
+
+</script>
+   
 <body>
 
     <!-- 1. LANDING PAGE -->
