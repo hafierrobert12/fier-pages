@@ -762,7 +762,158 @@ nav {
 
 
 
-/* ══ SHARED TOAST ══ */
+/* ══ EVENT POPUP ══ */
+.event-overlay {
+  position: fixed; inset: 0; z-index: 8000;
+  background: rgba(6,3,2,.75);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .5s ease;
+}
+.event-overlay.show { opacity: 1; pointer-events: all; }
+
+.event-popup {
+  position: relative;
+  width: min(480px, 92vw);
+  background: linear-gradient(150deg, #1a0e06 0%, #130a0e 50%, #0e0814 100%);
+  border: 1px solid rgba(212,168,67,.3);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,.8), 0 0 0 1px rgba(212,168,67,.08);
+  transform: scale(.88) translateY(24px);
+  transition: transform .5s cubic-bezier(.34,1.4,.64,1);
+}
+.event-overlay.show .event-popup {
+  transform: scale(1) translateY(0);
+}
+
+/* grain on popup */
+.event-popup::before {
+  content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+  opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px;
+}
+
+/* candle glow inside popup */
+.event-popup-glow {
+  position:absolute; pointer-events:none; z-index:0;
+  width:320px; height:260px;
+  background: radial-gradient(ellipse at 60% 30%, rgba(210,130,20,.14) 0%, transparent 65%);
+  top:-60px; right:-40px;
+  border-radius:50%;
+  animation: gP 7s ease-in-out infinite;
+}
+
+/* banner top strip */
+.event-banner {
+  position: relative; z-index: 1;
+  background: linear-gradient(90deg, rgba(212,168,67,.18) 0%, rgba(180,100,20,.12) 100%);
+  border-bottom: 1px solid rgba(212,168,67,.2);
+  padding: 10px 22px;
+  display: flex; align-items: center; gap: 10px;
+}
+.event-banner-badge {
+  font-size: .58rem; font-weight: 800; letter-spacing: .14em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--gold) 0%, #a06820 100%);
+  color: #0e0907; padding: 3px 10px; border-radius: 20px;
+  flex-shrink: 0;
+}
+.event-banner-date {
+  font-size: .7rem; font-weight: 700; color: rgba(212,168,67,.8);
+  letter-spacing: .06em;
+}
+.event-banner-date em { font-style: normal; color: var(--gold-light); }
+
+/* close button */
+.event-close {
+  position: absolute; top: 12px; right: 14px; z-index: 10;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(212,168,67,.2);
+  border-radius: 50%; width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: rgba(200,170,110,.6); font-size: .8rem;
+  transition: background .2s, color .2s;
+}
+.event-close:hover { background: rgba(255,255,255,.13); color: var(--text-main); }
+
+/* popup body */
+.event-body {
+  position: relative; z-index: 1;
+  padding: 28px 28px 24px;
+}
+
+.event-icon {
+  font-size: 2.8rem; line-height: 1;
+  margin-bottom: 14px; display: block;
+  animation: heroDeco 5s ease-in-out infinite;
+}
+
+.event-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 700; line-height: 1.25;
+  color: var(--text-main); margin-bottom: 6px;
+}
+.event-title em { font-style: italic; color: var(--gold-light); }
+
+.event-subtitle {
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 14px; opacity: .8;
+}
+
+.event-desc {
+  font-family: 'Crimson Pro', serif; font-style: italic;
+  font-size: .98rem; color: rgba(220,195,145,.8); line-height: 1.7;
+  margin-bottom: 22px;
+  border-left: 2px solid rgba(212,168,67,.25);
+  padding-left: 14px;
+}
+
+/* detail chips */
+.event-chips {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 22px;
+}
+.event-chip {
+  font-size: .68rem; font-weight: 700;
+  padding: 4px 11px; border-radius: 20px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(212,168,67,.18);
+  color: rgba(200,170,110,.75);
+  display: flex; align-items: center; gap: 5px;
+}
+
+/* CTA buttons */
+.event-actions { display: flex; gap: 10px; }
+.event-btn-primary {
+  flex: 1; padding: 11px;
+  background: linear-gradient(135deg, var(--gold) 0%, #a06820 100%);
+  color: #0e0907; border: none; border-radius: 12px;
+  font-family: 'Nunito', sans-serif; font-size: .78rem; font-weight: 800;
+  letter-spacing: .05em; text-transform: uppercase; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(212,168,67,.3);
+  transition: opacity .2s, transform .15s;
+}
+.event-btn-primary:hover { opacity: .88; transform: translateY(-1px); }
+.event-btn-secondary {
+  padding: 11px 18px;
+  background: rgba(255,255,255,.05); color: var(--text-dim);
+  border: 1px solid rgba(212,168,67,.18); border-radius: 12px;
+  font-family: 'Nunito', sans-serif; font-size: .78rem; font-weight: 700;
+  cursor: pointer; transition: background .2s, color .2s;
+  white-space: nowrap;
+}
+.event-btn-secondary:hover { background: rgba(255,255,255,.09); color: var(--text-main); }
+
+/* footer note */
+.event-footer-note {
+  text-align: center; margin-top: 14px;
+  font-size: .62rem; color: rgba(180,140,70,.45);
+  font-family: 'Crimson Pro', serif; font-style: italic;
+}
+
 #toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:rgba(18,10,4,.96);color:rgba(245,234,216,.92);border:1px solid rgba(212,168,67,.18);font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:600;padding:9px 22px;border-radius:40px;z-index:9000;pointer-events:none;opacity:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;box-shadow:0 8px 24px rgba(0,0,0,.5);}
 #toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
 </style>
@@ -1619,48 +1770,51 @@ nav {
     </div>
 
     <div class="featured-grid">
-      <div class="feat-card" onclick="toast('📜 Opening poem…')">
-        <div class="feat-card-type">✦ Poem</div>
+      <!-- Card 1: Leaves of Grass -->
+      <div class="feat-card" onclick="window.open('https://drive.google.com/file/d/1RnJwZfLxz43ZPGDqNzFHfficEFULa-iI/view?usp=drivesdk','_blank')">
+        <div class="feat-card-type">✦ Poetry Collection</div>
         <div class="feat-card-cover">
-          <div class="feat-card-cover-bg" style="background:radial-gradient(ellipse at 50% 100%,rgba(74,124,255,.6) 0%,transparent 70%)"></div>
-          🌧️
+          <div class="feat-card-cover-bg" style="background:radial-gradient(ellipse at 50% 100%,rgba(80,160,80,.55) 0%,transparent 70%)"></div>
+          🌿
         </div>
-        <div class="feat-card-title">Hujan di Bulan Juni</div>
-        <div class="feat-card-author">Sapardi Djoko Damono</div>
-        <div class="feat-card-excerpt">tak ada yang lebih tabah dari hujan bulan Juni, dirahasiakannya rintik rindunya kepada pohon berbunga itu</div>
+        <div class="feat-card-title">Leaves of Grass</div>
+        <div class="feat-card-author">Walt Whitman · 1855</div>
+        <div class="feat-card-excerpt">A celebration of democracy, nature, and the human body — Whitman's lifework, revised across 37 years and over 400 poems.</div>
         <div class="feat-card-footer">
-          <span class="feat-card-likes"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2.4k</span>
-          <span class="feat-card-tag">Lyric</span>
+          <span class="feat-card-likes"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3.2k</span>
+          <span class="feat-card-tag">American</span>
         </div>
       </div>
 
-      <div class="feat-card" onclick="toast('📚 Opening book…')">
-        <div class="feat-card-type">✦ Novel</div>
+      <!-- Card 2: Don Juan -->
+      <div class="feat-card" onclick="window.open('https://drive.google.com/file/d/1kM9Leh2eFoQ1pdB87Yqfi0V_cV1TgvWn/view?usp=drivesdk','_blank')">
+        <div class="feat-card-type">✦ Satirical Epic</div>
         <div class="feat-card-cover">
-          <div class="feat-card-cover-bg" style="background:radial-gradient(ellipse at 50% 100%,rgba(123,94,167,.6) 0%,transparent 70%)"></div>
-          📖
+          <div class="feat-card-cover-bg" style="background:radial-gradient(ellipse at 50% 100%,rgba(180,60,60,.55) 0%,transparent 70%)"></div>
+          🎭
         </div>
-        <div class="feat-card-title">Saman</div>
-        <div class="feat-card-author">Ayu Utami</div>
-        <div class="feat-card-excerpt">Sebuah kisah tentang empat perempuan yang terikat dalam persahabatan dan pencarian kebebasan di bawah rezim Orde Baru.</div>
+        <div class="feat-card-title">Don Juan</div>
+        <div class="feat-card-author">Lord Byron · 1819–1824</div>
+        <div class="feat-card-excerpt">A sardonic mock-epic that reimagines the legendary seducer as an innocent young man swept along by women and war alike.</div>
         <div class="feat-card-footer">
-          <span class="feat-card-likes"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1.8k</span>
-          <span class="feat-card-tag">Prose</span>
-        </div>
-      </div>
-
-      <div class="feat-card" onclick="toast('📜 Opening poem…')">
-        <div class="feat-card-type">✦ Poem</div>
-        <div class="feat-card-cover">
-          <div class="feat-card-cover-bg" style="background:radial-gradient(ellipse at 50% 100%,rgba(200,140,40,.5) 0%,transparent 70%)"></div>
-          🕯️
-        </div>
-        <div class="feat-card-title">If You Forget Me</div>
-        <div class="feat-card-author">Pablo Neruda</div>
-        <div class="feat-card-excerpt">I want you to know one thing. You know how this is: if I look at the crystal moon, at the red branch of the slow autumn…</div>
-        <div class="feat-card-footer">
-          <span class="feat-card-likes"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3.1k</span>
+          <span class="feat-card-likes"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2.1k</span>
           <span class="feat-card-tag">Romantic</span>
+        </div>
+      </div>
+
+      <!-- Card 3: The Odyssey -->
+      <div class="feat-card" onclick="window.open('https://drive.google.com/file/d/14nxHD70HT9SZuSkvx1h3-eVWkHtSxjwI/view?usp=drivesdk','_blank')">
+        <div class="feat-card-type">✦ Epic Poem</div>
+        <div class="feat-card-cover">
+          <div class="feat-card-cover-bg" style="background:radial-gradient(ellipse at 50% 100%,rgba(74,124,255,.55) 0%,transparent 70%)"></div>
+          ⚓
+        </div>
+        <div class="feat-card-title">The Odyssey</div>
+        <div class="feat-card-author">Homer · c. 700 BCE</div>
+        <div class="feat-card-excerpt">The ten-year sea voyage of Odysseus — navigating monsters, gods, and longing — to return home to Ithaca after the fall of Troy.</div>
+        <div class="feat-card-footer">
+          <span class="feat-card-likes"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4.8k</span>
+          <span class="feat-card-tag">Ancient Greek</span>
         </div>
       </div>
     </div>
@@ -1894,6 +2048,59 @@ nav {
 <!-- SHARED TOAST -->
 <div id="toast"></div>
 
+<!-- ════════════════════
+     EVENT POPUP
+════════════════════ -->
+<div class="event-overlay" id="eventOverlay">
+  <div class="event-popup">
+    <div class="event-popup-glow"></div>
+
+    <!-- top banner -->
+    <div class="event-banner">
+      <span class="event-banner-badge">✦ Upcoming Event</span>
+      <span class="event-banner-date"><em>20 Mei 2026</em> · Medan, Indonesia</span>
+    </div>
+
+    <!-- close -->
+    <button class="event-close" onclick="closeEvent()">✕</button>
+
+    <!-- body -->
+    <div class="event-body">
+      <span class="event-icon">📜</span>
+
+      <div class="event-subtitle">Literary Gathering · House of Verses</div>
+      <h2 class="event-title">Malam <em>Kata-Kata</em><br>dan Keheningan</h2>
+
+      <p class="event-desc">
+        Sebuah malam pembacaan puisi dan prosa — di mana kata-kata
+        dibiarkan menggema dalam keheningan, dan setiap kalimat
+        menemukan pendengar yang selama ini menunggunya.
+      </p>
+
+      <div class="event-chips">
+        <span class="event-chip">🕯️ Pembacaan Puisi</span>
+        <span class="event-chip">📖 Diskusi Karya</span>
+        <span class="event-chip">🎵 Live Musik</span>
+        <span class="event-chip">🌿 Pameran Buku</span>
+        <span class="event-chip">🖊️ Open Mic</span>
+      </div>
+
+      <div class="event-actions">
+        <button class="event-btn-primary" onclick="toast('🎟️ Reservasi segera dibuka!'); closeEvent();">
+          Simpan Tanggal
+        </button>
+        <button class="event-btn-secondary" onclick="closeEvent()">
+          Nanti saja
+        </button>
+      </div>
+
+      <p class="event-footer-note">
+        "Puisi adalah cara termesra untuk berbohong tentang kebenaran." — House of Verses
+      </p>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ══ LANDING — RAF LOOP ══ */
 // ═══════════════════════════════════════════════════════
@@ -2095,6 +2302,10 @@ function toast(msg) {
   setTimeout(() => t.classList.remove('show'), 3200);
 }
 
+function closeEvent() {
+  document.getElementById('eventOverlay').classList.remove('show');
+}
+
 /* ══ PAGE SWITCH ══ */
 function switchToHome(userName) {
   const overlay = document.getElementById('switchOverlay');
@@ -2102,12 +2313,15 @@ function switchToHome(userName) {
   setTimeout(() => {
     document.getElementById('landing-page').style.display = 'none';
     document.getElementById('homepage').classList.add('visible');
-    // Update name if provided
     if (userName) {
       const el = document.querySelector('#homepage .hero-name em');
       if (el) el.textContent = userName + ' Lovelace';
     }
     overlay.classList.remove('on');
+    // Show event popup after homepage loads
+    setTimeout(() => {
+      document.getElementById('eventOverlay').classList.add('show');
+    }, 900);
   }, 480);
 }
 
